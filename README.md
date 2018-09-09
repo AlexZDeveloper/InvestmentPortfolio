@@ -1,2 +1,0 @@
-# InvestmentPortfolio
-UniLecs Task124
