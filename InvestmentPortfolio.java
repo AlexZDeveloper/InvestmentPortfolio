@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -16,19 +15,11 @@ SecondShares = [2, 3], SecondTotalValue = 5
 */
 
 /*
- * Задача решена 2-мя способами
+ * Способ решения
  * 1. Перебор всех возможных комбинаций ценных бумаг и нахождение той комбинации, при которой разница в стоимости этих портфелей была минимальной.
  * Для ускорения процесса, если нашли комбинацию, при которой разница в стоимости = 0, то дальнейший поиск прекращаем.
  * Комбинации находим путем перебора чисел от 0 до 2^n. Каждое такое число представляем в двоичном виде (010011..), кол-во цифр = кол-ву ценных бумаг.
  * Если на i-м месте стоит "1", то ценная бумага Аi попадает в первый портфель, если "0" - то во второй.
- * 
- * 
- * 2. Упорядочиваем ценные бумаги и берем по очереди все бумаги начиная с той, у которой стоимость наибольшая.
- * На каждом шаге ценную бумагу ложим в тот портфель, стоимость которого меньше, чем у воторого.
- * Данный способ позволяет решить задачу намного быстрее, но он имеет некоторую погрешность.
- * Данный алгоритм известен как "Жадный алгоритм задачи разбиения множества чисел", и даёт 7⁄6-аппроксимацию относительно оптимального решения оптимизационной версии.
- * Т.е. стоимость наибольшего портфеля найденного по данному алгоритму <= 7/6 стоимости наибольшего портфеля с оптимальным решением.
- * Данный подход можно применять если нужна высокая скорость и допускается небольшая погрешность в вычислениях. 
  * */
 public class InvestmentPortfolio 
 {
@@ -73,25 +64,6 @@ public class InvestmentPortfolio
 			
 		}
 	}	
-	
-	
-	public void calculateQuick(int[] shares) {
-		firstShares.clear();
-		secondShares.clear();
-		Arrays.sort(shares);
-    	int firstSum = 0;
-    	int secondSum = 0;   
-    	for (int i = shares.length - 1; i>=0; i--) {
-    		if (firstSum < secondSum) {
-    			firstShares.add(shares[i]);
-    			firstSum += shares[i];
-    		} else {
-    			secondShares.add(shares[i]);
-    			secondSum += shares[i];
-    		}		
-    	}    	
-    }
-	
 
 	public List<Integer> getFirstShares() {
 		return firstShares;		
@@ -124,8 +96,5 @@ public class InvestmentPortfolio
     	InvestmentPortfolio portfolio = new InvestmentPortfolio();
     	portfolio.calculate(shares);
     	portfolio.printShares(); 
-    	
-    	portfolio.calculateQuick(shares);
-        portfolio.printShares();    	
 	}
 }
