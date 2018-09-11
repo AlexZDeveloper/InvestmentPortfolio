@@ -22,13 +22,7 @@ public class InvestmentPortfolioTest {
     	
         assertEquals(4, InvestmentPortfolio.getTotal(firstShares));
         assertEquals(5, InvestmentPortfolio.getTotal(secondShares));
-        
-        portfolio.calculateQuick(shares);
-        firstShares = portfolio.getFirstShares();
-    	secondShares = portfolio.getSecondShares();        
-        assertEquals(4, InvestmentPortfolio.getTotal(firstShares));
-        assertEquals(5, InvestmentPortfolio.getTotal(secondShares));
-        
+       
         portfolio.printShares();
     }
     
@@ -65,14 +59,5 @@ public class InvestmentPortfolioTest {
     	portfolio.printShares();    	
     	assertEquals(13, InvestmentPortfolio.getTotal(firstShares));
         assertEquals(13, InvestmentPortfolio.getTotal(secondShares));
-        
-        portfolio.calculateQuick(shares);
-        firstShares = portfolio.getFirstShares();
-    	secondShares = portfolio.getSecondShares();    	
-    	assertEquals(13, InvestmentPortfolio.getTotal(firstShares));
-        assertEquals(13, InvestmentPortfolio.getTotal(secondShares));
-    	portfolio.printShares();
     }
-    
-    
 }
